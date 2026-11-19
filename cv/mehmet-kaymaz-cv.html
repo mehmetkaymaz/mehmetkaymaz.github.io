@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mehmet Kaymaz — CV</title>
+<meta name="description" content="Mehmet Kaymaz özgeçmişi: Web Tasarım ve WordPress Uzmanı, İzmir. İki yıllık ajans deneyimi.">
+<link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ------------------------------------------------------------
+     ATS UYUMLU CV
+     - Tek sütun: PDF'teki okuma sırası = görünen sıra
+     - Standart bölüm başlıkları (Profil, İş Deneyimi, Eğitim, Yetenekler, Diller)
+     - Başlıklarda harf aralığı yok (ATS harfleri ayrı kelime sanmasın)
+     - Ligatür kapalı ("fi", "fl" gibi birleşik harfler metinde bozulmasın)
+     - Görsel, tablo, ikon, çok sütun yok; tüm bilgiler düz metin
+     ------------------------------------------------------------ */
+  :root {
+    --paper: #ffffff;
+    --ink: #1f2328;
+    --ink-soft: #3f444b;
+    --muted: #6b7079;
+    --rule: #cfd6df;
+    --accent: #1d3a5f;
+
+    /* üst çubuk — sitenin renkleri */
+    --night: #0b1a2e;
+    --snow: #eef3fa;
+    --fog: #93a6c0;
+    --blue: #3d7eff;
+    --blue-deep: #1f5bd6;
+    --line-d: rgba(238, 243, 250, .14);
+
+    --sans: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    --ui: "Geist", "Segoe UI", Arial, sans-serif;
+
+    --page-w: 210mm;
+    --page-h: 297mm;
+    --pad-x: 17mm;
+    --pad-y: 14mm;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #dfe3e9; }
+  body {
+    font-family: var(--sans); font-size: 10pt; line-height: 1.5; color: var(--ink);
+    font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0;
+    -webkit-font-smoothing: antialiased; padding: 104px 0 64px;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+
+  /* ------------------------------------------------------------
+     Üst çubuk (ekranda görünür, baskıda/PDF'te gizlenir)
+     ------------------------------------------------------------ */
+  .bar {
+    position: fixed; inset: 0 0 auto 0; z-index: 10;
+    background: rgba(11, 26, 46, .94); color: var(--snow);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line-d); font-family: var(--ui);
+  }
+  .bar-in {
+    display: flex; align-items: center; gap: 14px;
+    max-width: 1100px; height: 72px; margin: 0 auto; padding: 0 24px;
+  }
+  .back { display: flex; align-items: center; gap: 12px; margin-right: auto; min-width: 0; }
+  .back img { width: 36px; height: 36px; flex: none; }
+  .back span { display: grid; gap: 2px; min-width: 0; }
+  .back b { font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; }
+  .back small { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--fog); white-space: nowrap; transition: color .2s; }
+  .back small svg { width: 14px; height: 14px; transition: transform .2s; }
+  .back:hover small { color: var(--snow); }
+  .back:hover small svg { transform: translateX(-3px); }
+
+  .lang-switch {
+    position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; flex: none;
+    padding: 3px; border-radius: 99px; border: 1px solid rgba(238,243,250,.18); background: rgba(238,243,250,.04);
+  }
+  .lang-switch::before {
+    content: ""; position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px);
+    border-radius: 99px; background: var(--snow); transition: transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .lang-switch[data-cur="en"]::before { transform: translateX(100%); }
+  .lang-switch a {
+    position: relative; z-index: 1; display: grid; place-items: center; min-width: 38px; height: 30px; padding: 0 10px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: .06em; color: var(--fog); transition: color .2s;
+  }
+  .lang-switch a:hover { color: var(--snow); }
+  .lang-switch a[aria-current="true"] { color: var(--night); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 20px;
+    border-radius: 99px; border: 1px solid transparent; font: 500 14.5px var(--ui);
+    cursor: pointer; transition: background .2s, border-color .2s, color .2s; white-space: nowrap;
+  }
+  .btn svg { width: 17px; height: 17px; flex: none; }
+  .btn-ghost { background: none; border-color: rgba(238,243,250,.28); color: var(--snow); }
+  .btn-ghost:hover { border-color: var(--snow); }
+  .btn-pdf { background: var(--blue); color: #fff; }
+  .btn-pdf:hover { background: var(--blue-deep); }
+  .btn-pdf .size { padding-left: 9px; border-left: 1px solid rgba(255,255,255,.35); font-size: 12.5px; color: rgba(255,255,255,.8); }
+  .btn-pdf:hover svg { animation: nudge .5s ease; }
+  @keyframes nudge { 50% { transform: translateY(2px); } }
+
+  /* Düzenleme araçları — yalnızca adresin sonuna ?duzenle eklenince görünür */
+  .edit-tools { display: none; align-items: center; gap: 10px; }
+  body.can-edit .edit-tools { display: flex; }
+  .edit-tools .status { font-size: 12.5px; color: var(--fog); }
+  .edit-tools .status.warn { color: #f2c46d; }
+  .edit-tools .status.ok { color: #6fdca7; }
+  .edit-tools button[aria-pressed="true"] { background: var(--snow); color: var(--night); }
+  body.editing .page [contenteditable="true"]:focus { outline: 1px dashed var(--accent); outline-offset: 2px; }
+
+  /* ------------------------------------------------------------
+     A4 sayfa — tek sütun
+     ------------------------------------------------------------ */
+  .page {
+    width: var(--page-w); min-height: var(--page-h); margin: 0 auto;
+    padding: var(--pad-y) var(--pad-x);
+    background: var(--paper);
+    box-shadow: 0 2px 4px rgba(11,26,46,.06), 0 24px 60px -20px rgba(11,26,46,.25);
+  }
+
+  /* Üst kısım: ad, unvan, iletişim (düz metin) */
+  .head { padding-bottom: 4.5mm; border-bottom: 1.2pt solid var(--accent); }
+  .head h1 { font-size: 24pt; line-height: 1.1; font-weight: 600; color: var(--accent); }
+  .head .role { margin-top: 1.4mm; font-size: 12pt; font-weight: 500; color: var(--ink); }
+  .head .contact { margin-top: 2.6mm; font-size: 9.4pt; color: var(--ink-soft); }
+  .head .contact a { color: var(--ink-soft); }
+
+  /* Bölümler */
+  .section { margin-top: 5.5mm; }
+  .section h2 {
+    margin-bottom: 2.4mm; padding-bottom: 1mm; border-bottom: .5pt solid var(--rule);
+    font-size: 11.5pt; font-weight: 600; color: var(--accent);
+    break-after: avoid; page-break-after: avoid;
+  }
+  .section p { color: var(--ink); }
+
+  /* Deneyim / eğitim kaydı */
+  .entry + .entry { margin-top: 4mm; }
+  .entry h3 { font-size: 10.6pt; font-weight: 600; }
+  .entry .meta { margin-top: .4mm; font-size: 9.6pt; color: var(--ink-soft); }
+  .entry ul { margin-top: 2mm; padding-left: 5mm; }
+  .entry li + li { margin-top: 1.2mm; }
+  .entry li::marker { color: var(--accent); }
+
+  /* Yetenekler: "Başlık: anahtar, kelime, listesi" */
+  .skills { list-style: none; display: grid; gap: 1.6mm; }
+  .skills b { font-weight: 600; }
+
+  /* Yer tutucular — doldurulmamış alanlar */
+  .ph { color: #8a6d3b; background: #efe6d2; border-bottom: .75pt dashed #b89a5e; padding: 0 .35em; font-style: italic; font-weight: 400; }
+
+  /* ------------------------------------------------------------
+     Telefon / dar ekran
+     ------------------------------------------------------------ */
+  @media screen and (max-width: 860px) {
+    body { padding: 88px 0 24px; font-size: 15px; }
+    .bar-in { height: 64px; padding: 0 16px; gap: 8px; }
+    .back small, .btn-print, .btn-pdf .size { display: none; }
+    .back b { font-size: 14.5px; }
+    .btn { height: 40px; padding: 0 14px; font-size: 14px; }
+    .page { width: auto; min-height: 0; margin: 0 12px; padding: 24px 20px; box-shadow: 0 10px 30px -14px rgba(11,26,46,.3); }
+    .head h1 { font-size: 28px; }
+    .head .role { font-size: 17px; }
+    .section h2 { font-size: 17px; }
+    .entry h3 { font-size: 16px; }
+  }
+  @media screen and (max-width: 400px) {
+    .back span { display: none; }
+  }
+
+  /* ------------------------------------------------------------
+     A4 baskı / PDF — içerik taşarsa 2. sayfaya düzgün geçer
+     ------------------------------------------------------------ */
+  @page { size: A4 portrait; margin: 14mm 0; }
+  @page :first { margin-top: 0; }
+  @media print {
+    html, body { background: #fff; }
+    body { padding: 0; }
+    .no-print { display: none !important; }
+    .page { width: auto; min-height: 0; margin: 0; box-shadow: none; padding: var(--pad-y) var(--pad-x) 0; }
+    .entry, .skills li { break-inside: avoid; page-break-inside: avoid; }
+    .ph { background: none; border: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lang-switch::before, .btn-pdf:hover svg { transition: none; animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar no-print">
+  <div class="bar-in">
+    <a class="back" href="../index.html">
+      <img src="../img/logo.svg" alt="" width="36" height="36">
+      <span><b>Mehmet Kaymaz</b><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Siteye dön</small></span>
+    </a>
+    <div class="edit-tools">
+      <span class="status" id="status"></span>
+      <button type="button" class="btn btn-ghost" id="editBtn" aria-pressed="false">Metni düzenle</button>
+    </div>
+    <div class="lang-switch" data-cur="tr" role="group" aria-label="Dil">
+      <a href="mehmet-kaymaz-cv.html" hreflang="tr" lang="tr" aria-current="true" aria-label="Türkçe">TR</a>
+      <a href="../en/cv/mehmet-kaymaz-cv.html" hreflang="en" lang="en" aria-label="English">EN</a>
+    </div>
+    <button type="button" class="btn btn-ghost btn-print" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></svg>
+      Yazdır
+    </button>
+    <a class="btn btn-pdf" href="Mehmet-Kaymaz-CV.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+      PDF İndir <span class="size">A4</span>
+    </a>
+  </div>
+</header>
+
+<article class="page" id="cv">
+
+  <header class="head">
+    <h1>Mehmet Kaymaz</h1>
+    <p class="role">Web Tasarım ve WordPress Uzmanı</p>
+    <p class="contact">
+      İzmir, Türkiye | Telefon: <a href="tel:+905398692714">0539 869 27 14</a> | E-posta: <a href="mailto:info@mehmetkaymaz.com.tr">info@mehmetkaymaz.com.tr</a><br>
+      Web: <a href="https://mehmetkaymaz.com.tr">mehmetkaymaz.com.tr</a> | Doğum tarihi: 18.05.2004
+    </p>
+  </header>
+
+  <section class="section">
+    <h2>Profil</h2>
+    <p>WordPress ve Elementor Pro ile responsive web sitesi tasarımında 2 yıllık ajans deneyimine sahip Web Tasarım Uzmanıyım. Müşteri projelerinde web tasarımının yanı sıra SEO, Google Ads, sosyal medya yönetimi ve grafik tasarım işlerinde de görev aldım. Deneyimimi yeni projelerde değerlendirebileceğim bir ajans ya da dijital ekipte çalışmak istiyorum.</p>
+  </section>
+
+  <section class="section">
+    <h2>İş Deneyimi</h2>
+    <div class="entry">
+      <h3>Web Tasarım Uzmanı</h3>
+      <p class="meta">Web Tasarım Ajansı | İzmir | 2 yıl</p>
+      <ul>
+        <li>Ajans ekibiyle birlikte müşteri web sitelerinin tasarım ve yapım sürecinde görev aldım.</li>
+        <li>WordPress ve Elementor Pro ile sayfa düzenlerini, menü yapılarını ve Theme Builder şablonlarını kurdum; masaüstü, tablet ve mobil (responsive) görünümleri ayrı ayrı ayarladım.</li>
+        <li>Müşteriden gelen revizyon taleplerine göre yayındaki sitelerde tasarım ve içerik güncellemeleri yaptım.</li>
+        <li>Sitelerde sayfa başlıkları (title), meta açıklamalar ve site yapısı üzerinde site içi SEO düzenlemeleri yaptım.</li>
+        <li>Google Ads kampanyaları kurdum; anahtar kelime araştırması yaptım ve reklam metinlerini hazırladım.</li>
+        <li>Müşteri hesapları için sosyal medya içerik planı hazırladım, paylaşımları yönettim; sosyal medya gönderisi, banner ve web sitesi görselleri tasarladım.</li>
+        <li>Yapay zekâ araçları yardımıyla sitelere küçük kod eklemeleri (HTML, CSS) hazırladım ve test ettim.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EĞİTİM: bilgiler gelince buraya eklenecek (okul, bölüm, şehir, yıllar).
+  <section class="section">
+    <h2>Eğitim</h2>
+    <div class="entry">
+      <h3>Bölüm / Program</h3>
+      <p class="meta">Okul adı | Şehir | Başlangıç yılı – Mezuniyet yılı</p>
+    </div>
+  </section>
+  -->
+
+  <section class="section">
+    <h2>Yetenekler</h2>
+    <ul class="skills">
+      <li><b>Web Tasarım:</b> WordPress, Elementor Pro, Theme Builder, Responsive Web Tasarım, HTML, CSS</li>
+      <li><b>Dijital Pazarlama:</b> SEO, Site İçi SEO, Google Ads, Anahtar Kelime Araştırması, Reklam Metni Yazımı</li>
+      <li><b>Sosyal Medya:</b> Sosyal Medya Yönetimi, İçerik Planlama, İçerik Takvimi</li>
+      <li><b>Grafik Tasarım:</b> Sosyal Medya Gönderi Tasarımı, Banner Tasarımı, Web Görselleri</li>
+      <li><b>Diğer:</b> Yapay Zekâ Araçları, Yapay Zekâ Destekli Kodlama</li>
+    </ul>
+  </section>
+
+  <!-- DİLLER: İngilizce seviyesi gelince eklenecek.
+  <section class="section">
+    <h2>Diller</h2>
+    <ul class="skills">
+      <li>Türkçe: Anadil</li>
+      <li>İngilizce: Seviye</li>
+    </ul>
+  </section>
+  -->
+
+  <section class="section">
+    <h2>Çalışma Yaklaşımı</h2>
+    <ul class="skills">
+      <li><b>Düzen:</b> Sayfa yapısının temiz, anlaşılır ve tutarlı olmasına önem veriyorum.</li>
+      <li><b>Her ekranı ayrı kontrol:</b> Tasarımın masaüstünün yanı sıra tablet ve mobilde de düzgün görünmesini kontrol ediyorum.</li>
+      <li><b>Revizyona açık çalışma:</b> Gelen geri bildirimleri değerlendirerek tasarım ve içerik üzerinde gerekli düzenlemeleri yapıyorum.</li>
+    </ul>
+  </section>
+
+  <!-- SEÇİLMİŞ PROJELER: projeler hazır olunca buraya eklenecek.
+  <section class="section">
+    <h2>Projeler</h2>
+    ...
+  </section>
+  -->
+
+</article>
+
+<script>
+  // Düzenleme araçları yalnızca adres ?duzenle ile açılınca görünür (ör. mehmet-kaymaz-cv.html?duzenle).
+  const cv = document.getElementById('cv');
+  const status = document.getElementById('status');
+  const editBtn = document.getElementById('editBtn');
+  if (/[?&]duzenle\b/.test(location.search)) document.body.classList.add('can-edit');
+
+  function checkPlaceholders() {
+    const left = cv.querySelectorAll('.ph').length;
+    status.textContent = left
+      ? left + ' alan doldurulmadı — başvuruya göndermeden önce tamamlayın.'
+      : 'Tüm alanlar dolu. Başvuruya hazır.';
+    status.className = 'status ' + (left ? 'warn' : 'ok');
+  }
+
+  editBtn.addEventListener('click', () => {
+    const on = editBtn.getAttribute('aria-pressed') !== 'true';
+    editBtn.setAttribute('aria-pressed', String(on));
+    editBtn.textContent = on ? 'Düzenlemeyi bitir' : 'Metni düzenle';
+    document.body.classList.toggle('editing', on);
+    cv.querySelectorAll('h1, .role, p, li, h3, b, span').forEach(el => {
+      el.contentEditable = on ? 'true' : 'false';
+    });
+  });
+
+  cv.addEventListener('input', e => {
+    const ph = e.target.closest('.ph') || e.target.querySelector?.('.ph');
+    if (ph && ph.textContent.trim()) ph.classList.remove('ph');
+    checkPlaceholders();
+  });
+
+  checkPlaceholders();
+</script>
+</body>
+</html>
