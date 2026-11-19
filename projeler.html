@@ -340,7 +340,7 @@
   .tasks li::before { content: ""; position: absolute; left: 4px; top: 29px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
 
   /* Projeler */
-  .projects { margin-top: 56px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .projects { margin-top: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
   .project { background: var(--night-3); border: 1px solid var(--line-d); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
   .project .frame { aspect-ratio: 16 / 10; display: grid; place-content: center; text-align: center; padding: 16px; background: repeating-linear-gradient(135deg, rgba(238,243,250,.03) 0 12px, transparent 12px 24px); border-bottom: 1px solid var(--line-d); color: var(--fog); font-size: 14px; }
   .project .frame img { width: 100%; height: 100%; object-fit: cover; }
@@ -459,30 +459,21 @@
       <p class="p-lead">Her projede ne yaptığımı ve katkımı kısaca özetledim.</p>
       <div class="projects">
         <article class="project sl" style="--i:0">
-          <div class="frame"><span>Ekran görüntüsü eklenecek</span></div>
+          <div class="frame"><img src="img/proje-izmir-guzellik.jpg" alt="İzmir Güzellik Salonları sitesinin ana sayfası" width="960" height="600" loading="lazy"></div>
           <div class="body">
-            <h3><span class="ph">Proje adı</span></h3>
-            <p><span class="ph">Projenin ne olduğu, kimin için yapıldığı, bir cümle</span></p>
-            <p class="mine"><b>Katkım</b><span class="ph">Bu projede yaptığım işler</span></p>
-            <a class="link" href="#" target="_blank" rel="noopener">Siteyi aç</a>
+            <h3>İzmir Güzellik Salonları</h3>
+            <p>İzmir'in 30 ilçesindeki 800'ü aşkın güzellik salonunu ilçe ve hizmete göre listeleyen salon rehberi ve randevu platformu.</p>
+            <p class="mine"><b>Katkım</b><span>Sitenin tasarımı ve yapımı; ilçe ve hizmet bazlı sayfa yapısı, arama alanı, responsive düzen ve SEO düzenlemeleri.</span></p>
+            <a class="link" href="https://izmirguzelliksalonlari.com/" target="_blank" rel="noopener">Siteyi aç</a>
           </div>
         </article>
         <article class="project sl" style="--i:1">
-          <div class="frame"><span>Ekran görüntüsü eklenecek</span></div>
+          <div class="frame"><img src="img/proje-hizliteklif.jpg" alt="HızlıTeklif teklif yönetim sisteminin ana sayfası" width="960" height="600" loading="lazy"></div>
           <div class="body">
-            <h3><span class="ph">Proje adı</span></h3>
-            <p><span class="ph">Projenin ne olduğu, kimin için yapıldığı, bir cümle</span></p>
-            <p class="mine"><b>Katkım</b><span class="ph">Bu projede yaptığım işler</span></p>
-            <a class="link" href="#" target="_blank" rel="noopener">Siteyi aç</a>
-          </div>
-        </article>
-        <article class="project sl" style="--i:2">
-          <div class="frame"><span>Ekran görüntüsü eklenecek</span></div>
-          <div class="body">
-            <h3><span class="ph">Proje adı</span></h3>
-            <p><span class="ph">Projenin ne olduğu, kimin için yapıldığı, bir cümle</span></p>
-            <p class="mine"><b>Katkım</b><span class="ph">Bu projede yaptığım işler</span></p>
-            <a class="link" href="#" target="_blank" rel="noopener">Siteyi aç</a>
+            <h3>HızlıTeklif</h3>
+            <p>İşletmelerin dakikalar içinde teklif hazırlayıp PDF olarak gönderebildiği ve müşteri onayını tek panelden takip edebildiği teklif yönetim sistemi.</p>
+            <p class="mine"><b>Katkım</b><span>Arayüz tasarımı ve yapımı; tanıtım sayfası, teklif oluşturma, müşteri ve ürün yönetimi ekranları.</span></p>
+            <a class="link" href="https://teklif-lovat.vercel.app/" target="_blank" rel="noopener">Siteyi aç</a>
           </div>
         </article>
       </div>
