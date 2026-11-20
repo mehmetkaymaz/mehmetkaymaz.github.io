@@ -456,6 +456,14 @@
   .ct-tips li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--blue-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f5bd6' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center / 10px no-repeat; }
   @media (max-width: 860px) { .ct-direct { padding: 24px 20px; } .ct-actions { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .ct-mailbox { flex-direction: column; align-items: stretch; } .ct-mailbox b { font-size: 17px; overflow-wrap: normal; white-space: nowrap; } .ct-copy { justify-content: center; } }
+  /* İki sütun eşit: aynı genişlik, aynı yükseklik */
+  @media (min-width: 861px) {
+    .ct-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
+    .ct-cards { grid-auto-rows: 1fr; height: 100%; }
+    .ct-cards > li { display: flex; }
+    .ct-cards .ct-card { flex: 1; }
+    .ct-direct { height: 100%; }
+  }
 </style>
 <link rel="stylesheet" href="../footer.css">
 <link rel="alternate" hreflang="tr" href="../iletisim.html">
