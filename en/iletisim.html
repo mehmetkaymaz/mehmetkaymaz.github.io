@@ -429,6 +429,12 @@
     .ct-team { margin-top: 40px; padding: 36px 24px; border-radius: 20px; }
     .ct-team-btns .btn, .ct-submit .btn { width: 100%; }
   }
+  /* İletişim formu: gönderim durumu */
+  .ct-note.ok { color: #15803d; font-weight: 500; }
+  .ct-note.err { color: #b91c1c; }
+  .ct-note a { color: inherit; text-decoration: underline; }
+  .ct-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+  .ct-submit .btn[disabled] { opacity: .7; cursor: progress; }
 </style>
 <link rel="stylesheet" href="../footer.css">
 <link rel="alternate" hreflang="tr" href="../iletisim.html">
@@ -589,13 +595,14 @@
 
         <form class="ct-form sr" style="--i:1" id="iletisimForm" novalidate>
           <h3>Send a message</h3>
-          <p>When you fill in the form, a ready-made message opens in your email app.</p>
+          <p>Your message goes straight to my inbox, and I'll get back to you as soon as I can.</p>
           <div class="ct-fields">
             <div class="ct-field"><label for="f-ad">Full name</label><input id="f-ad" name="ad" type="text" autocomplete="name" required></div>
             <div class="ct-field"><label for="f-mail">Email</label><input id="f-mail" name="mail" type="email" autocomplete="email" required></div>
             <div class="ct-field full"><label for="f-konu">Subject</label><input id="f-konu" name="konu" type="text" required></div>
             <div class="ct-field full"><label for="f-mesaj">Message</label><textarea id="f-mesaj" name="mesaj" required></textarea></div>
           </div>
+          <div class="ct-hp" aria-hidden="true"><label>Bu alanı boş bırakın<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
           <div class="ct-submit">
             <button type="submit" class="btn btn-blue">Send Message
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -696,16 +703,37 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
   document.querySelectorAll('.sl, .sr').forEach(el => io.observe(el));
 
-  // ---------- İletişim formu: e-posta uygulamasında hazır mesaj açar ----------
+  // ---------- Contact form: sends the message straight to my email via FormSubmit ----------
   const form = document.getElementById('iletisimForm');
   const formNot = document.getElementById('formNot');
-  form.addEventListener('submit', e => {
+  const sendBtn = form.querySelector('button[type=submit]');
+  const MAIL = 'mehmetkaymaz.web@gmail.com';
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
     const d = new FormData(form);
-    const body = `${d.get('mesaj')}\n\n— ${d.get('ad')}\n${d.get('mail')}`;
-    location.href = `mailto:mehmetkaymaz.web@gmail.com?subject=${encodeURIComponent(d.get('konu'))}&body=${encodeURIComponent(body)}`;
-    formNot.textContent = 'Opening your email app…';
+    if (d.get('_honey')) return;
+    sendBtn.disabled = true;
+    formNot.className = 'ct-note'; formNot.textContent = "Sending…";
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/' + MAIL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: d.get('ad'), email: d.get('mail'), konu: d.get('konu'), message: d.get('mesaj'),
+          _subject: "New message from the website: " + d.get('konu'), _template: 'table', _captcha: 'false'
+        })
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || res.status);
+      form.reset();
+      formNot.className = 'ct-note ok'; formNot.textContent = "Thank you! Your message has reached me, and I'll get back to you soon.";
+    } catch (err) {
+      formNot.className = 'ct-note err';
+      formNot.innerHTML = "The message couldn't be sent right now. You can email me directly at " + '<a href="mailto:' + MAIL + '">' + MAIL + '</a>';
+    } finally {
+      sendBtn.disabled = false;
+    }
   });
 
   const onScroll = () => nav.classList.toggle('scrolled', scrollY > 20);
