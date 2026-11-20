@@ -1085,6 +1085,23 @@
   .hp-shot.full::before { display: none; }
   .hp-shot.full img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
   .hp a.hp-card:hover .hp-shot.full img { transform: scale(1.03); }
+  /* ---------- Telefon: projeler yana kaydırılan galeri ---------- */
+  .pg-nav { display: none; }
+  @media (max-width: 860px) {
+    .hp-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px;
+      margin-inline: -20px; padding: 4px 20px 18px; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+    .hp-grid::-webkit-scrollbar { display: none; }
+    .hp-grid > li { flex: 0 0 84%; scroll-snap-align: start; }
+    .hp-grid > li:last-child { margin-right: 6px; }
+    .hp a.hp-card { box-shadow: 0 18px 36px -24px rgba(11,26,46,.35); }
+    .pg-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 6px; }
+    .pg-dots { display: flex; gap: 6px; }
+    .pg-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: #c9d2df; cursor: pointer; transition: width .3s, background .3s; }
+    .pg-dots button[aria-current="true"] { width: 24px; background: var(--blue); }
+    .pg-count { font-size: 13.5px; font-weight: 600; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+    .pg-count b { color: var(--ink); }
+  }
+  @media (max-width: 860px) and (prefers-reduced-motion: reduce) { .pg-dots button { transition: none; } }
 </style>
 <link rel="stylesheet" href="footer.css">
 <link rel="alternate" hreflang="en" href="en/index.html">
@@ -1404,6 +1421,7 @@
         </a>
       </li>
     </ul>
+      <div class="pg-nav" role="group" aria-label="Proje"><div class="pg-dots"></div><span class="pg-count"><b>1</b> / 6</span></div>
   </div>
 </section>
 
@@ -1748,6 +1766,27 @@
 
   show(0);
   setPlaying(playing);
+</script>
+<script>
+// Telefon: proje galerisi için nokta göstergesi ve sayaç
+(() => {
+  const grid = document.querySelector('.hp-grid');
+  const nav = document.querySelector('.pg-nav');
+  if (!grid || !nav) return;
+  const items = [...grid.children];
+  const dots = nav.querySelector('.pg-dots');
+  const cur = nav.querySelector('.pg-count b');
+  items.forEach((li, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', "Proje" + ' ' + (i + 1));
+    b.addEventListener('click', () => grid.scrollTo({ left: li.offsetLeft - grid.offsetLeft - 20, behavior: 'smooth' }));
+    dots.appendChild(b);
+  });
+  const set = i => { [...dots.children].forEach((d, k) => d.setAttribute('aria-current', String(k === i))); cur.textContent = i + 1; };
+  set(0);
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) set(items.indexOf(e.target)); }), { root: grid, threshold: .6 });
+  items.forEach(li => io.observe(li));
+})();
 </script>
 <script src="cerez.js" defer></script>
 </body>
