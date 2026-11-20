@@ -71,3 +71,6 @@ footer.site-footer .wrap { display: block; }
   .nav-cv svg { width: 18px; height: 18px; }
   .nav-panel .nav-cv { margin-right: -16px; }
 }
+
+/* Yandan kayan bölümler telefonda yatay kaydırma oluşturmasın (tüm sayfalar) */
+html, body { overflow-x: clip; }
