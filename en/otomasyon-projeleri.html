@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Automation Projects — Mehmet Kaymaz</title>
-<meta name="description" content="AI-powered blog, WordPress site setup, SEO, work network and visa application automations built by Mehmet Kaymaz: what they do, how they work and the technologies behind them.">
+<meta name="description" content="AI-powered blog, WordPress site setup, SEO and work network automations built by Mehmet Kaymaz: what they do, how they work and the technologies behind them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2" as="font" type="font/woff2" crossorigin>
@@ -598,6 +598,8 @@
 
   /* Yandan kayan bölümler telefonda yatay kaydırma oluşturmasın */
   html, body { overflow-x: clip; }
+  /* 4 proje + davet kartı: davet kartı iki sütun genişliğinde */
+  @media (min-width: 861px) { .pc-grid > .pc-cta { grid-column: span 2; } }
 </style>
 <link rel="stylesheet" href="../footer.css">
 <link rel="alternate" hreflang="tr" href="../otomasyon-projeleri.html">
@@ -670,10 +672,10 @@
       <a class="crumb rv" href="projeler.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>All projects</a>
       <p class="eyebrow rv" style="margin-top:28px">Software and automation</p>
       <h1 class="rv" style="--d:1">I turn everyday repetitive work into software.</h1>
-      <p class="a-hero-lead rv" style="--d:2">Five projects that automate hours of manual work end to end: writing and publishing blog posts, setting up WordPress sites, preparing SEO content and filling in forms. Each card explains what the project does, how it works and the technologies I used.</p>
+      <p class="a-hero-lead rv" style="--d:2">Four projects that automate hours of manual work end to end: writing and publishing blog posts, setting up WordPress sites and preparing SEO content. Each card explains what the project does, how it works and the technologies I used.</p>
     </div>
     <div class="ot-facts rv" style="--d:3">
-      <div><b>5</b><span>Working automation projects</span></div>
+      <div><b>4</b><span>Working automation projects</span></div>
       <div><b>3</b><span>Languages: Python, TypeScript, C#</span></div>
       <div><b>53</b><span>Automated tests (Work Network)</span></div>
       <div><b>LLM</b><span>AI-powered content generation</span></div>
@@ -778,27 +780,6 @@
         <a class="pc-open" href="otomasyon-is-agi.html">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
 
-      <!-- 05 -->
-      <article class="cs pc sl" id="p-vize" style="--i:1;--tone:#8b5cf6" aria-labelledby="p-vize-t">
-        <figure class="pc-shot">
-          <div class="mk">
-            <div class="mk-bar" aria-hidden="true"><i></i><i></i><i></i><span>Visa Assistant · Dashboard</span></div>
-            <img src="../img/proje-vize-asistani-1280.webp" srcset="../img/proje-vize-asistani-640.webp 640w, ../img/proje-vize-asistani-1280.webp 1280w, ../img/proje-vize-asistani-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="Visa Application Assistant dashboard listing application statuses" width="1600" height="1000" loading="lazy" decoding="async">
-          </div>
-        </figure>
-        <header class="cs-head">
-          <span class="cs-no" aria-hidden="true">05</span>
-          <div>
-            <h3 id="p-vize-t"><a href="otomasyon-vize-asistani.html" class="pc-link">Visa Application Assistant</a></h3>
-            <p class="cs-sum">A human-in-the-loop RPA system and dashboard that automates the repetitive parts of visa application forms and leaves critical steps to a person.</p>
-          </div>
-          <span class="cs-kind">Python · RPA</span>
-        </header>
-        <ul class="cs-stack" aria-label="Technologies used">
-          <li>Python</li><li>Playwright</li><li>Selenium</li><li>Flask</li><li>Waitress</li><li>asyncio</li><li>State Machine</li>
-        </ul>
-        <a class="pc-open" href="otomasyon-vize-asistani.html">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>
 
 
       <!-- 06: davet -->
@@ -816,7 +797,7 @@
           </div>
         </figure>
         <header class="cs-head">
-          <span class="cs-no" aria-hidden="true">06</span>
+          <span class="cs-no" aria-hidden="true">05</span>
           <div>
             <h3 id="p-next-t">Your workflow could be the next automation</h3>
             <p class="cs-sum">Does your team repeat a task by hand every day? Let's map its steps together and turn it into a reliable automation. I can also demo my projects live over screen share.</p>

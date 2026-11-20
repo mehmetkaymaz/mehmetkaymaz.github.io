@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Otomasyon Projeleri — Mehmet Kaymaz</title>
-<meta name="description" content="Mehmet Kaymaz'ın geliştirdiği yapay zekâ destekli blog, WordPress site kurulumu, SEO, iş ağı ve vize başvuru otomasyonları: ne işe yaradıkları, nasıl çalıştıkları ve kullanılan teknolojiler.">
+<meta name="description" content="Mehmet Kaymaz'ın geliştirdiği yapay zekâ destekli blog, WordPress site kurulumu, SEO ve iş ağı otomasyonları: ne işe yaradıkları, nasıl çalıştıkları ve kullanılan teknolojiler.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2" as="font" type="font/woff2" crossorigin>
@@ -598,6 +598,8 @@
 
   /* Yandan kayan bölümler telefonda yatay kaydırma oluşturmasın */
   html, body { overflow-x: clip; }
+  /* 4 proje + davet kartı: davet kartı iki sütun genişliğinde */
+  @media (min-width: 861px) { .pc-grid > .pc-cta { grid-column: span 2; } }
 </style>
 <link rel="stylesheet" href="footer.css">
 <link rel="alternate" hreflang="en" href="en/otomasyon-projeleri.html">
@@ -670,10 +672,10 @@
       <a class="crumb rv" href="projeler.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Tüm projeler</a>
       <p class="eyebrow rv" style="margin-top:28px">Yazılım ve otomasyon</p>
       <h1 class="rv" style="--d:1">Her gün tekrar eden işleri yazılımla çözüyorum.</h1>
-      <p class="a-hero-lead rv" style="--d:2">Blog yazıp yayınlamaktan WordPress site kurmaya, SEO içeriği hazırlamaktan form doldurmaya kadar elle saatler süren işleri uçtan uca otomatikleştiren beş proje. Her kartta ne işe yaradığını, nasıl çalıştığını ve kullandığım teknolojileri bulabilirsiniz.</p>
+      <p class="a-hero-lead rv" style="--d:2">Blog yazıp yayınlamaktan WordPress site kurmaya, SEO içeriği hazırlamaya kadar elle saatler süren işleri uçtan uca otomatikleştiren dört proje. Her kartta ne işe yaradığını, nasıl çalıştığını ve kullandığım teknolojileri bulabilirsiniz.</p>
     </div>
     <div class="ot-facts rv" style="--d:3">
-      <div><b>5</b><span>Çalışan otomasyon projesi</span></div>
+      <div><b>4</b><span>Çalışan otomasyon projesi</span></div>
       <div><b>3</b><span>Dil: Python, TypeScript, C#</span></div>
       <div><b>53</b><span>Otomatik test (İş Ağı)</span></div>
       <div><b>LLM</b><span>Yapay zekâ ile içerik üretimi</span></div>
@@ -778,27 +780,6 @@
         <a class="pc-open" href="otomasyon-is-agi.html">Nasıl çalışır?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
 
-      <!-- 05 -->
-      <article class="cs pc sl" id="p-vize" style="--i:1;--tone:#8b5cf6" aria-labelledby="p-vize-t">
-        <figure class="pc-shot">
-          <div class="mk">
-            <div class="mk-bar" aria-hidden="true"><i></i><i></i><i></i><span>Vize Asistanı · Dashboard</span></div>
-            <img src="img/proje-vize-asistani-1280.webp" srcset="img/proje-vize-asistani-640.webp 640w, img/proje-vize-asistani-1280.webp 1280w, img/proje-vize-asistani-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="Vize Başvuru Asistanı'nın başvuru durumlarını listeleyen yönetim paneli" width="1600" height="1000" loading="lazy" decoding="async">
-          </div>
-        </figure>
-        <header class="cs-head">
-          <span class="cs-no" aria-hidden="true">05</span>
-          <div>
-            <h3 id="p-vize-t"><a href="otomasyon-vize-asistani.html" class="pc-link">Vize Başvuru Asistanı</a></h3>
-            <p class="cs-sum">Vize başvuru formlarındaki tekrar eden işleri otomatikleştiren, kritik adımları insana bırakan (human-in-the-loop) bir RPA sistemi ve yönetim paneli.</p>
-          </div>
-          <span class="cs-kind">Python · RPA</span>
-        </header>
-        <ul class="cs-stack" aria-label="Kullanılan teknolojiler">
-          <li>Python</li><li>Playwright</li><li>Selenium</li><li>Flask</li><li>Waitress</li><li>asyncio</li><li>State Machine</li>
-        </ul>
-        <a class="pc-open" href="otomasyon-vize-asistani.html">Nasıl çalışır?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>
 
 
       <!-- 06: davet -->
@@ -816,7 +797,7 @@
           </div>
         </figure>
         <header class="cs-head">
-          <span class="cs-no" aria-hidden="true">06</span>
+          <span class="cs-no" aria-hidden="true">05</span>
           <div>
             <h3 id="p-next-t">Sıradaki otomasyon sizin işiniz olabilir</h3>
             <p class="cs-sum">Ekibinizin her gün elle tekrarladığı bir iş mi var? Birlikte adımlarını çıkarıp güvenilir bir otomasyona dönüştürelim. Projelerimi görüşmede ekran paylaşımıyla canlı da gösterebilirim.</p>
