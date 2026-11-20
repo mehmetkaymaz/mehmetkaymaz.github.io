@@ -1080,8 +1080,11 @@
     .hp-body { padding: 20px; }
   }
   @media (prefers-reduced-motion: reduce) { .hp a.hp-card, .hp-win { transition: none; } }
-  /* 5 kart: ilk kart öne çıkan, iki sütun genişliğinde */
-  @media (min-width: 861px) { .hp-grid > li:first-child { grid-column: span 2; } .hp-grid > li:first-child .hp-shot { height: 236px; } }
+  /* Tam görsel kartı (mobil uygulama) */
+  .hp-shot.full { padding: 0; }
+  .hp-shot.full::before { display: none; }
+  .hp-shot.full img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .hp a.hp-card:hover .hp-shot.full img { transform: scale(1.03); }
 </style>
 <link rel="stylesheet" href="../footer.css">
 <link rel="alternate" hreflang="tr" href="../index.html">
@@ -1359,39 +1362,45 @@
     <div class="sec-head">
       <h2 class="sec-title" id="projeler-baslik">Websites I designed, automations I built.</h2>
       <div>
-        <p class="sec-lead">A website I designed during my agency years and four automation projects that turn repetitive work into software. Every card leads to a detailed project page.</p>
+        <p class="sec-lead">My mobile app live on Google Play, a website I designed during my agency years and four automation projects that turn repetitive work into software. Click any card for the details.</p>
         <a href="projeler.html" class="hp-more" style="margin-top:18px">All projects<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
     <ul class="hp-grid">
+      <li class="hp" style="--tone:#16a34a" data-reveal>
+        <a class="hp-card" href="https://play.google.com/store/apps/details?id=com.macagel.futbol&amp;hl=tr" target="_blank" rel="noopener">
+          <span class="hp-shot full"><img src="../img/proje-macagel-1280.webp" srcset="../img/proje-macagel-640.webp 640w, ../img/proje-macagel-1280.webp 1280w, ../img/proje-macagel-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 760px" alt="MaçaGel Futbol mobile app logo and app screens" width="1600" height="1000" loading="lazy" decoding="async"></span>
+          <span class="hp-body"><span class="hp-top"><b>01</b><small>Mobile app</small></span><span class="hp-t">MaçaGel Futbol</span><span class="hp-d">An app for setting up matches and building teams with friends and nearby players. Live on Google Play.</span><span class="hp-go">Open on Google Play<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
+        </a>
+      </li>
       <li class="hp" style="--tone:#c026d3" data-reveal>
         <a class="hp-card" href="https://izmirguzelliksalonlari.com/" target="_blank" rel="noopener">
           <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="../img/proje-izmir-guzellik-960.webp" srcset="../img/proje-izmir-guzellik-640.webp 640w, ../img/proje-izmir-guzellik-960.webp 960w" sizes="(max-width: 860px) 94vw, 560px" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-          <span class="hp-body"><span class="hp-top"><b>01</b><small>Website</small></span><span class="hp-t">İzmir Güzellik Salonları</span><span class="hp-d">A directory and booking platform listing 800+ salons.</span><span class="hp-go">Open site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
+          <span class="hp-body"><span class="hp-top"><b>02</b><small>Website</small></span><span class="hp-t">İzmir Güzellik Salonları</span><span class="hp-d">A directory and booking platform listing 800+ salons.</span><span class="hp-go">Open site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
         </a>
       </li>
       <li class="hp" style="--tone:#3d7eff" data-reveal>
         <a class="hp-card" href="otomasyon-blog-platformu.html">
           <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="../img/proje-blog-otomasyon-1280.webp" srcset="../img/proje-blog-otomasyon-640.webp 640w, ../img/proje-blog-otomasyon-1280.webp 1280w, ../img/proje-blog-otomasyon-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-          <span class="hp-body"><span class="hp-top"><b>02</b><small>Full-stack</small></span><span class="hp-t">AI Blog Content and Distribution Platform</span><span class="hp-d">Writes with AI and publishes across multiple WordPress sites.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="hp-body"><span class="hp-top"><b>03</b><small>Full-stack</small></span><span class="hp-t">AI Blog Content and Distribution Platform</span><span class="hp-d">Writes with AI and publishes across multiple WordPress sites.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </a>
       </li>
       <li class="hp" style="--tone:#6366f1" data-reveal>
         <a class="hp-card" href="otomasyon-site-kurucu.html">
           <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="../img/proje-site-kurucu-1280.webp" srcset="../img/proje-site-kurucu-640.webp 640w, ../img/proje-site-kurucu-1280.webp 1280w, ../img/proje-site-kurucu-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-          <span class="hp-body"><span class="hp-top"><b>03</b><small>Python · AI</small></span><span class="hp-t">AI WordPress Site Builder</span><span class="hp-d">Generates Elementor pages from company details and a logo.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="hp-body"><span class="hp-top"><b>04</b><small>Python · AI</small></span><span class="hp-t">AI WordPress Site Builder</span><span class="hp-d">Generates Elementor pages from company details and a logo.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </a>
       </li>
       <li class="hp" style="--tone:#06b6d4" data-reveal>
         <a class="hp-card" href="otomasyon-deep-seo.html">
           <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="../img/proje-deep-seo-1280.webp" srcset="../img/proje-deep-seo-640.webp 640w, ../img/proje-deep-seo-1280.webp 1280w, ../img/proje-deep-seo-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-          <span class="hp-body"><span class="hp-top"><b>04</b><small>C# · .NET 8</small></span><span class="hp-t">Deep SEO and Snippet Automation</span><span class="hp-d">Analyzes competitors, then writes the missing content and metadata.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="hp-body"><span class="hp-top"><b>05</b><small>C# · .NET 8</small></span><span class="hp-t">Deep SEO and Snippet Automation</span><span class="hp-d">Analyzes competitors, then writes the missing content and metadata.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </a>
       </li>
       <li class="hp" style="--tone:#9b2c47" data-reveal>
         <a class="hp-card" href="otomasyon-is-agi.html">
           <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="../img/proje-is-agi-1280.webp" srcset="../img/proje-is-agi-640.webp 640w, ../img/proje-is-agi-1280.webp 1280w, ../img/proje-is-agi-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
-          <span class="hp-body"><span class="hp-top"><b>05</b><small>Next.js</small></span><span class="hp-t">Work Network Management Platform</span><span class="hp-d">Recommends the right team and splits revenue to the cent.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="hp-body"><span class="hp-top"><b>06</b><small>Next.js</small></span><span class="hp-t">Work Network Management Platform</span><span class="hp-d">Recommends the right team and splits revenue to the cent.</span><span class="hp-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
         </a>
       </li>
     </ul>

@@ -581,8 +581,10 @@
   @media (prefers-reduced-motion: reduce) { .mc a, .mc-shot img { transition: none; } }
   /* Yandan kayan bölümler telefonda yatay kaydırma oluşturmasın */
   html, body { overflow-x: clip; }
-  /* 5 kart: ilk kart öne çıkan, iki sütun genişliğinde */
-  @media (min-width: 861px) { .mc-grid > li:first-child { grid-column: span 2; } }
+  /* Tam görsel kartı (mobil uygulama) */
+  .mc-shot.full { padding: 0; }
+  .mc-shot.full img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: center; border-radius: 0; box-shadow: none; transform: none; }
+  .mc a:hover .mc-shot.full img { transform: scale(1.03); }
 </style>
 <link rel="stylesheet" href="../footer.css">
 <link rel="alternate" hreflang="tr" href="../projeler.html">
@@ -654,7 +656,7 @@
     <div>
       <p class="eyebrow rv">Projects</p>
       <h1 class="rv" style="--d:1">Websites I designed and automations I built.</h1>
-      <p class="a-hero-lead rv" style="--d:2">A website I designed during my agency years and four automation projects that turn repetitive work into software.</p>
+      <p class="a-hero-lead rv" style="--d:2">My mobile app live on Google Play, a website I designed during my agency years and four automation projects that turn repetitive work into software.</p>
     </div>
   </div>
 </header>
@@ -670,34 +672,40 @@
         <a href="otomasyon-projeleri.html" class="mc-all">Automation details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <ul class="mc-grid">
+        <li class="mc sl" style="--i:0;--tone:#16a34a">
+          <a href="https://play.google.com/store/apps/details?id=com.macagel.futbol&amp;hl=tr" target="_blank" rel="noopener">
+            <span class="mc-shot full"><img src="../img/proje-macagel-1280.webp" srcset="../img/proje-macagel-640.webp 640w, ../img/proje-macagel-1280.webp 1280w, ../img/proje-macagel-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 760px" alt="MaçaGel Futbol mobile app logo and app screens" width="1600" height="1000" loading="lazy" decoding="async"></span>
+            <span class="mc-body"><span class="mc-top"><b>01</b><small>Mobile app</small></span><span class="mc-t">MaçaGel Futbol</span><span class="mc-d">An app for setting up matches and building teams with friends and nearby players. Live on Google Play.</span><span class="mc-go">Open on Google Play<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
+          </a>
+        </li>
         <li class="mc sl" style="--i:0;--tone:#c026d3">
           <a href="https://izmirguzelliksalonlari.com/" target="_blank" rel="noopener">
             <span class="mc-shot"><img src="../img/proje-izmir-guzellik-960.webp" srcset="../img/proje-izmir-guzellik-640.webp 640w, ../img/proje-izmir-guzellik-960.webp 960w" sizes="(max-width: 860px) 94vw, 560px" alt="Screenshot of İzmir Güzellik Salonları" width="960" height="600" loading="lazy" decoding="async"></span>
-            <span class="mc-body"><span class="mc-top"><b>01</b><small>Website</small></span><span class="mc-t">İzmir Güzellik Salonları</span><span class="mc-d">A directory and booking platform listing 800+ beauty salons across İzmir's 30 districts. I designed and built it.</span><span class="mc-go">Open site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
+            <span class="mc-body"><span class="mc-top"><b>02</b><small>Website</small></span><span class="mc-t">İzmir Güzellik Salonları</span><span class="mc-d">A directory and booking platform listing 800+ beauty salons across İzmir's 30 districts. I designed and built it.</span><span class="mc-go">Open site<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
           </a>
         </li>
         <li class="mc sl" style="--i:1;--tone:#3d7eff">
           <a href="otomasyon-blog-platformu.html">
             <span class="mc-shot"><img src="../img/proje-blog-otomasyon-1280.webp" srcset="../img/proje-blog-otomasyon-640.webp 640w, ../img/proje-blog-otomasyon-1280.webp 1280w, ../img/proje-blog-otomasyon-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="Screenshot of the AI Blog Content and Distribution Platform" width="1600" height="1000" loading="lazy" decoding="async"></span>
-            <span class="mc-body"><span class="mc-top"><b>02</b><small>Full-stack</small></span><span class="mc-t">AI Blog Content and Distribution Platform</span><span class="mc-d">Turns a source blog into original AI-written posts, publishes them across multiple WordPress sites and shares them on LinkedIn.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+            <span class="mc-body"><span class="mc-top"><b>03</b><small>Full-stack</small></span><span class="mc-t">AI Blog Content and Distribution Platform</span><span class="mc-d">Turns a source blog into original AI-written posts, publishes them across multiple WordPress sites and shares them on LinkedIn.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
           </a>
         </li>
         <li class="mc sl" style="--i:2;--tone:#6366f1">
           <a href="otomasyon-site-kurucu.html">
             <span class="mc-shot"><img src="../img/proje-site-kurucu-1280.webp" srcset="../img/proje-site-kurucu-640.webp 640w, ../img/proje-site-kurucu-1280.webp 1280w, ../img/proje-site-kurucu-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="Screenshot of the AI WordPress Site Builder" width="1600" height="1000" loading="lazy" decoding="async"></span>
-            <span class="mc-body"><span class="mc-top"><b>03</b><small>Python · AI</small></span><span class="mc-t">AI WordPress Site Builder</span><span class="mc-d">Starts from company details and a logo, designs Elementor pages with AI and gets the site ready to launch.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+            <span class="mc-body"><span class="mc-top"><b>04</b><small>Python · AI</small></span><span class="mc-t">AI WordPress Site Builder</span><span class="mc-d">Starts from company details and a logo, designs Elementor pages with AI and gets the site ready to launch.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
           </a>
         </li>
         <li class="mc sl" style="--i:0;--tone:#06b6d4">
           <a href="otomasyon-deep-seo.html">
             <span class="mc-shot"><img src="../img/proje-deep-seo-1280.webp" srcset="../img/proje-deep-seo-640.webp 640w, ../img/proje-deep-seo-1280.webp 1280w, ../img/proje-deep-seo-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="Screenshot of the Deep SEO and Snippet Automation" width="1600" height="1000" loading="lazy" decoding="async"></span>
-            <span class="mc-body"><span class="mc-top"><b>04</b><small>C# · .NET 8</small></span><span class="mc-t">Deep SEO and Snippet Automation</span><span class="mc-d">Analyzes Google competitors to find content gaps, then writes SEO content and Rank Math metadata.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+            <span class="mc-body"><span class="mc-top"><b>05</b><small>C# · .NET 8</small></span><span class="mc-t">Deep SEO and Snippet Automation</span><span class="mc-d">Analyzes Google competitors to find content gaps, then writes SEO content and Rank Math metadata.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
           </a>
         </li>
         <li class="mc sl" style="--i:1;--tone:#9b2c47">
           <a href="otomasyon-is-agi.html">
             <span class="mc-shot"><img src="../img/proje-is-agi-1280.webp" srcset="../img/proje-is-agi-640.webp 640w, ../img/proje-is-agi-1280.webp 1280w, ../img/proje-is-agi-1600.webp 1600w" sizes="(max-width: 860px) 94vw, 560px" alt="Screenshot of the Work Network Management Platform" width="1600" height="1000" loading="lazy" decoding="async"></span>
-            <span class="mc-body"><span class="mc-top"><b>05</b><small>Next.js</small></span><span class="mc-t">Work Network Management Platform</span><span class="mc-d">Brings freelance teams and clients together, recommends the right team and splits revenue fairly.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+            <span class="mc-body"><span class="mc-top"><b>06</b><small>Next.js</small></span><span class="mc-t">Work Network Management Platform</span><span class="mc-d">Brings freelance teams and clients together, recommends the right team and splits revenue fairly.</span><span class="mc-go">How it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
           </a>
         </li>
       </ul>
