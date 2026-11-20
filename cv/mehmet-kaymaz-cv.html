@@ -8,7 +8,7 @@
 <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ------------------------------------------------------------
      ATS UYUMLU CV
@@ -190,6 +190,117 @@
   @media (prefers-reduced-motion: reduce) {
     .lang-switch::before, .btn-pdf:hover svg { transition: none; animation: none; }
   }
+  /* ------------------------------------------------------------
+     TASARIM v3 — iki sütunlu, zarif görünüm (2 sayfa A4)
+     ATS için: HTML sırası = okuma sırası (önce ana içerik, sonra yan sütun);
+     yan sütun yalnızca CSS ile sola alınır.
+     ------------------------------------------------------------ */
+  :root { --cream: #fbfaf6; --line: #d9d3c7; --navy: #1b2f4e; --blue2: #2f5fb3; --muted2: #7a7468; --serif: "Fraunces", Georgia, "Times New Roman", serif; }
+  .page { background: var(--cream); padding: 15mm 15mm 14mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .head { padding-bottom: 6mm; border-bottom: 1.1pt solid var(--ink); }
+  .head h1 { font: 600 31pt/1 var(--serif); color: var(--ink); font-variation-settings: "opsz" 72; }
+  .head .role { margin-top: 2.4mm; font-size: 11.5pt; font-weight: 500; color: var(--ink-soft); }
+  .cols { display: grid; grid-template-columns: 54mm minmax(0, 1fr); column-gap: 8mm; margin-top: 6.5mm; }
+  .main { grid-column: 2; grid-row: 1; min-width: 0; }
+  .side { grid-column: 1; grid-row: 1; padding-right: 6mm; border-right: .6pt solid var(--line); }
+
+  .cv-h { display: flex; align-items: center; gap: 3mm; margin-bottom: 3.2mm; font-size: 8.6pt; font-weight: 600; text-transform: uppercase; color: var(--navy); break-after: avoid; page-break-after: avoid; }
+  .cv-h::after { content: ""; flex: 1; height: .6pt; background: var(--line); }
+  .side .cv-h::after { display: none; }
+  .blk + .blk { margin-top: 6.5mm; }
+
+  .lead { font: 400 11.4pt/1.6 var(--serif); color: var(--ink); }
+
+  .job-t { display: flex; align-items: baseline; justify-content: space-between; gap: 4mm; font-size: 10.4pt; font-weight: 600; color: var(--ink); }
+  .job-t span { font-weight: 400; font-size: 9.2pt; color: var(--muted2); white-space: nowrap; }
+  .job-m { margin-top: .4mm; font-size: 9.2pt; color: var(--blue2); font-weight: 500; }
+  .dash { margin-top: 2.2mm; list-style: none; }
+  .dash li { position: relative; padding-left: 4.4mm; font-size: 9.6pt; line-height: 1.5; color: var(--ink-soft); }
+  .dash li + li { margin-top: 1.1mm; }
+  .dash li::before { content: "–"; position: absolute; left: 0; color: var(--blue2); }
+
+  .pj { display: grid; grid-template-columns: 9mm minmax(0, 1fr); padding: 3.4mm 0; border-top: .5pt solid var(--line); break-inside: avoid; page-break-inside: avoid; }
+  .pj:first-of-type { border-top: 0; padding-top: 0; }
+  .pj-n { font: 500 13pt/1.1 var(--serif); color: var(--blue2); }
+  .pj h3 { font-size: 10.4pt; font-weight: 600; color: var(--ink); }
+  .pj .tech { margin-top: .5mm; font-size: 8.8pt; color: var(--muted2); }
+  .pj .tech b { font-weight: 600; color: var(--navy); }
+  .pj .dash { margin-top: 1.6mm; }
+  .pj-note { margin: -1mm 0 2.4mm; font-size: 8.8pt; font-style: italic; color: var(--muted2); }
+
+  .side dl > div + div { margin-top: 3mm; }
+  .side dt { font-size: 7.4pt; font-weight: 600; text-transform: uppercase; color: var(--muted2); }
+  .side dd { margin-top: .4mm; font-size: 9.4pt; color: var(--ink); overflow-wrap: anywhere; }
+  .side dd a { border-bottom: .5pt solid var(--line); }
+  .sk { list-style: none; }
+  .sk li + li { margin-top: 2.8mm; }
+  .sk b { display: block; font-size: 9.4pt; font-weight: 600; color: var(--ink); }
+  .sk span { display: block; margin-top: .5mm; font-size: 8.7pt; line-height: 1.45; color: var(--ink-soft); }
+
+  @media screen and (max-width: 860px) {
+    .page { padding: 26px 20px; }
+    .head h1 { font-size: 34px; }
+    .head .role { font-size: 16px; }
+    .cols { grid-template-columns: minmax(0, 1fr); row-gap: 28px; }
+    .main, .side { grid-column: 1; grid-row: auto; }
+    .side { order: -1; padding: 0 0 24px; border-right: 0; border-bottom: 1px solid var(--line); }
+    .cv-h { font-size: 12px; }
+    .lead { font-size: 17px; }
+    .job-t, .pj h3 { font-size: 15.5px; }
+    .dash li, .side dd, .sk b { font-size: 14.5px; }
+    .job-m, .pj .tech, .sk span { font-size: 13.5px; }
+    .side dt { font-size: 11px; }
+  }
+  .side dd.mail { font-size: 8.6pt; overflow-wrap: normal; white-space: nowrap; }
+  @page { margin: 0; }
+  @page :first { margin: 0; }
+  @media print {
+    html, body { background: var(--cream); }
+    .page { padding: 13mm 15mm 12mm; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  }
+  /* ------------------------------------------------------------
+     ÜST ALAN v2 — yalnızca ekranda (baskı/PDF'te gizli)
+     ------------------------------------------------------------ */
+  @media screen {
+    html { background: #e6e9ee; }
+    body { padding-top: 0; }
+    .bar { position: sticky; top: 0; background: rgba(11, 26, 46, .97); border-bottom: 1px solid rgba(238,243,250,.08); }
+    .bar::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: linear-gradient(90deg, transparent, rgba(61,126,255,.8) 30%, rgba(139,92,246,.8) 70%, transparent); }
+    .bar-in { max-width: 1180px; height: 76px; gap: 12px; }
+    .back { gap: 14px; }
+    .back img { width: 40px; height: 40px; border-radius: 11px; box-shadow: 0 8px 20px -8px rgba(61,126,255,.6); }
+    .back b { font-size: 16px; }
+    .back small { margin-top: 1px; }
+    .bar-sep { width: 1px; height: 28px; background: rgba(238,243,250,.14); margin: 0 4px; }
+    .btn { height: 42px; }
+    .btn-ghost { background: rgba(238,243,250,.04); }
+    .btn-ghost:hover { background: rgba(238,243,250,.09); }
+    .btn-pdf { box-shadow: 0 10px 24px -10px rgba(61,126,255,.8); }
+
+    .cv-hero { position: relative; isolation: isolate; overflow: hidden; padding: 64px 24px 170px; text-align: center; color: var(--snow); font-family: var(--ui);
+      background: radial-gradient(700px 360px at 80% -10%, rgba(61,126,255,.38), transparent 70%), radial-gradient(600px 320px at 10% 110%, rgba(139,92,246,.28), transparent 70%), var(--night); }
+    .cv-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(238,243,250,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(238,243,250,.045) 1px, transparent 1px); background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 20%, #000 30%, transparent 100%); mask-image: radial-gradient(ellipse 70% 80% at 50% 20%, #000 30%, transparent 100%); }
+    .cv-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px; border-radius: 99px; border: 1px solid rgba(238,243,250,.16); background: rgba(238,243,250,.05); font-size: 13px; color: var(--fog); }
+    .cv-eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 4px rgba(52,211,153,.18); }
+    .cv-title { margin-top: 20px; font: 600 clamp(34px, 5vw, 56px)/1.02 "Fraunces", Georgia, serif; letter-spacing: -.02em; color: #fff; }
+    .cv-sub { max-width: 58ch; margin: 14px auto 0; font-size: 16px; line-height: 1.6; color: var(--fog); }
+    .cv-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 26px; list-style: none; }
+    .cv-chips li { display: flex; align-items: baseline; gap: 8px; padding: 9px 16px; border-radius: 14px; border: 1px solid rgba(238,243,250,.12); background: rgba(238,243,250,.05); font-size: 13.5px; color: var(--fog); }
+    .cv-chips b { font-size: 17px; font-weight: 600; color: #fff; }
+
+    .page { position: relative; margin-top: -120px; border-radius: 6px; box-shadow: 0 1px 2px rgba(11,26,46,.08), 0 40px 90px -30px rgba(11,26,46,.45); }
+    .cv-foot { max-width: 210mm; margin: 22px auto 0; text-align: center; font: 13.5px var(--ui); color: #6b7380; }
+  }
+  @media screen and (max-width: 860px) {
+    .bar-in { height: 64px; }
+    .bar-sep { display: none; }
+    .cv-hero { padding: 40px 18px 110px; }
+    .cv-sub { font-size: 15px; }
+    .cv-chips li { padding: 7px 12px; }
+    .page { margin-top: -80px; border-radius: 12px; }
+  }
+  @media print { .cv-hero, .cv-foot { display: none !important; } }
 </style>
 </head>
 <body>
@@ -208,96 +319,160 @@
       <a href="mehmet-kaymaz-cv.html" hreflang="tr" lang="tr" aria-current="true" aria-label="Türkçe">TR</a>
       <a href="../en/cv/mehmet-kaymaz-cv.html" hreflang="en" lang="en" aria-label="English">EN</a>
     </div>
+    <span class="bar-sep" aria-hidden="true"></span>
     <button type="button" class="btn btn-ghost btn-print" onclick="window.print()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></svg>
       Yazdır
     </button>
     <a class="btn btn-pdf" href="Mehmet-Kaymaz-CV.pdf" download>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
-      PDF İndir <span class="size">A4</span>
+      PDF İndir
     </a>
   </div>
 </header>
+
+<section class="cv-hero no-print" aria-label="Özgeçmiş">
+  <span class="cv-eyebrow"><i aria-hidden="true"></i>Yeni iş fırsatlarına açığım</span>
+  <p class="cv-title">Özgeçmiş</p>
+  <p class="cv-sub">Web tasarım, WordPress ve yapay zekâ destekli otomasyon alanındaki deneyimim ve projelerim.</p>
+  <ul class="cv-chips"><li><b>2 yıl</b>ajans deneyimi</li><li><b>6</b>proje</li><li><b>İzmir</b>Türkiye</li></ul>
+</section>
+
 
 <article class="page" id="cv">
 
   <header class="head">
     <h1>Mehmet Kaymaz</h1>
     <p class="role">Web Tasarım ve WordPress Uzmanı</p>
-    <p class="contact">
-      İzmir, Türkiye | Telefon: <a href="tel:+905398692714">0539 869 27 14</a> | E-posta: <a href="mailto:mehmetkaymaz.web@gmail.com">mehmetkaymaz.web@gmail.com</a><br>
-      Web: <a href="https://mehmetkaymaz.github.io">mehmetkaymaz.github.io</a> | Doğum tarihi: 18.05.2004
-    </p>
   </header>
 
-  <section class="section">
-    <h2>Profil</h2>
-    <p>WordPress ve Elementor Pro ile responsive web sitesi tasarımında 2 yıllık ajans deneyimine sahip Web Tasarım Uzmanıyım. Müşteri projelerinde web tasarımının yanı sıra SEO, Google Ads, sosyal medya yönetimi ve grafik tasarım işlerinde de görev aldım. Deneyimimi yeni projelerde değerlendirebileceğim bir ajans ya da dijital ekipte çalışmak istiyorum.</p>
-  </section>
+  <div class="cols">
+    <main class="main">
+      <section class="blk">
+        <h2 class="cv-h">Profil</h2>
+        <p class="lead">WordPress ve Elementor Pro ile responsive web sitesi tasarımında 2 yıllık ajans deneyimine sahip Web Tasarım Uzmanıyım. Müşteri projelerinde web tasarımının yanı sıra SEO, Google Ads, sosyal medya yönetimi ve grafik tasarım işlerinde de görev aldım. Bunun yanında Python, TypeScript ve C# ile yapay zekâ destekli WordPress, SEO ve iş akışı otomasyonları geliştiriyorum.</p>
+      </section>
 
-  <section class="section">
-    <h2>İş Deneyimi</h2>
-    <div class="entry">
-      <h3>Web Tasarım Uzmanı</h3>
-      <p class="meta">Web Tasarım Ajansı | İzmir | 2 yıl</p>
-      <ul>
-        <li>Ajans ekibiyle birlikte müşteri web sitelerinin tasarım ve yapım sürecinde görev aldım.</li>
-        <li>WordPress ve Elementor Pro ile sayfa düzenlerini, menü yapılarını ve Theme Builder şablonlarını kurdum; masaüstü, tablet ve mobil (responsive) görünümleri ayrı ayrı ayarladım.</li>
-        <li>Müşteriden gelen revizyon taleplerine göre yayındaki sitelerde tasarım ve içerik güncellemeleri yaptım.</li>
-        <li>Sitelerde sayfa başlıkları (title), meta açıklamalar ve site yapısı üzerinde site içi SEO düzenlemeleri yaptım.</li>
-        <li>Google Ads kampanyaları kurdum; anahtar kelime araştırması yaptım ve reklam metinlerini hazırladım.</li>
-        <li>Müşteri hesapları için sosyal medya içerik planı hazırladım, paylaşımları yönettim; sosyal medya gönderisi, banner ve web sitesi görselleri tasarladım.</li>
-        <li>Yapay zekâ araçları yardımıyla sitelere küçük kod eklemeleri (HTML, CSS) hazırladım ve test ettim.</li>
-      </ul>
-    </div>
-  </section>
+      <section class="blk">
+        <h2 class="cv-h">İş Deneyimi</h2>
+        <h3 class="job-t">Web Tasarım Uzmanı <span>2 yıl</span></h3>
+        <p class="job-m">Web Tasarım Ajansı | İzmir</p>
+        <ul class="dash">
+            <li>Ajans ekibiyle birlikte müşteri web sitelerinin tasarım ve yapım sürecinde görev aldım.</li>
+            <li>WordPress ve Elementor Pro ile sayfa düzenlerini, menü yapılarını ve Theme Builder şablonlarını kurdum; masaüstü, tablet ve mobil (responsive) görünümleri ayrı ayrı ayarladım.</li>
+            <li>Müşteriden gelen revizyon taleplerine göre yayındaki sitelerde tasarım ve içerik güncellemeleri yaptım.</li>
+            <li>Sitelerde sayfa başlıkları (title), meta açıklamalar ve site yapısı üzerinde site içi SEO düzenlemeleri yaptım.</li>
+            <li>Google Ads kampanyaları kurdum; anahtar kelime araştırması yaptım ve reklam metinlerini hazırladım.</li>
+            <li>Müşteri hesapları için sosyal medya içerik planı hazırladım, paylaşımları yönettim; sosyal medya gönderisi, banner ve web sitesi görselleri tasarladım.</li>
+            <li>Yapay zekâ araçları yardımıyla sitelere küçük kod eklemeleri (HTML, CSS) hazırladım ve test ettim.</li>
+        </ul>
+      </section>
 
-  <!-- EĞİTİM: bilgiler gelince buraya eklenecek (okul, bölüm, şehir, yıllar).
-  <section class="section">
-    <h2>Eğitim</h2>
-    <div class="entry">
-      <h3>Bölüm / Program</h3>
-      <p class="meta">Okul adı | Şehir | Başlangıç yılı – Mezuniyet yılı</p>
-    </div>
-  </section>
-  -->
+      <section class="blk">
+        <h2 class="cv-h">Projeler</h2>
+        <p class="pj-note">Ekran görüntüleri ve ayrıntılı açıklamalar sitemdeki Projeler sayfasında.</p>
+        <div class="pj">
+          <span class="pj-n">01</span>
+          <div>
+            <h3>İzmir Güzellik Salonları</h3>
+            <p class="tech"><b>Ajans projesi</b> | WordPress, Responsive Tasarım, SEO | izmirguzelliksalonlari.com</p>
+            <ul class="dash">
+            <li>İzmir'in 30 ilçesindeki 800'ü aşkın güzellik salonunu listeleyen rehber ve randevu platformunun tasarımını ve yapımını üstlendim.</li>
+            <li>İlçe ve hizmet bazlı sayfa yapısını, arama alanını, responsive düzeni ve SEO düzenlemelerini hazırladım.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pj">
+          <span class="pj-n">02</span>
+          <div>
+            <h3>AI Blog İçerik ve Dağıtım Platformu</h3>
+            <p class="tech"><b>Kişisel proje</b> | Python, FastAPI, Playwright, Next.js, TypeScript, WebSocket</p>
+            <ul class="dash">
+            <li>Kaynak blogları tarayıp yapay zekâ (LLM API) ile SEO uyumlu, özgün içerik üreten; içerikleri birden fazla WordPress sitesinde yayınlayıp LinkedIn'de paylaşan full-stack otomasyon platformu geliştirdim.</li>
+            <li>Gutenberg, Klasik Editör ve WordPress.com için ayrı yayın akışları, iş kuyruğu ve WebSocket ile canlı ilerleme takibi kurdum; site şifrelerini Fernet ile şifreli sakladım, paneli JWT ile korudum.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pj">
+          <span class="pj-n">03</span>
+          <div>
+            <h3>AI WordPress Site Kurucu</h3>
+            <p class="tech"><b>Kişisel proje</b> | Python, FastAPI, Playwright, Elementor, Pillow, LLM API</p>
+            <ul class="dash">
+            <li>Firma bilgisi ve logodan yola çıkarak tema ve eklentileri kuran, Elementor sayfalarını yapay zekâ ile oluşturan otomasyon aracı geliştirdim.</li>
+            <li>Logodan marka renklerini otomatik çıkaran renk analizi ve Elementor şablonlarındaki metinleri firmaya göre yeniden yazan modül yazdım.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pj">
+          <span class="pj-n">04</span>
+          <div>
+            <h3>Deep SEO ve Snippet Otomasyonu</h3>
+            <p class="tech"><b>Kişisel proje</b> | C#, .NET 8, ASP.NET Core Web API, Entity Framework Core, PuppeteerSharp</p>
+            <ul class="dash">
+            <li>Anahtar kelime için SERP sonuçlarını ve rakip sayfaları tarayan, içerik boşluklarını bulup SEO içeriği ve Rank Math meta verilerini üreten, sonucu WordPress REST API ile yayınlayan SEO motoru geliştirdim.</li>
+            <li>Clean Architecture ile katmanlı yapı, ajan tabanlı iş bölümü, Excel ile toplu iş yükleme, Polly ile tekrar deneme ve token kullanım takibi uyguladım.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pj">
+          <span class="pj-n">05</span>
+          <div>
+            <h3>İş Ağı Yönetim Platformu</h3>
+            <p class="tech"><b>Kişisel proje</b> | Next.js 14, TypeScript, Prisma ORM, Zod, Vitest</p>
+            <ul class="dash">
+            <li>Serbest çalışan ekipleri müşteri projeleriyle açıklanabilir puanlarla eşleştiren ve proje gelirini kuruş hassasiyetinde paylaştıran platform geliştirdim.</li>
+            <li>Rol tabanlı yetkilendirme, denetim kaydı ve 53 birim testiyle doğrulanan finans ve eşleştirme motorları yazdım.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pj">
+          <span class="pj-n">06</span>
+          <div>
+            <h3>Vize Başvuru Asistanı</h3>
+            <p class="tech"><b>Kişisel proje</b> | Python, Playwright, Flask</p>
+            <ul class="dash">
+            <li>Form doldurma ve belge yükleme adımlarını otomatikleştiren, kritik adımlarda operatör onayı bekleyen durum makinesi tabanlı RPA sistemi ve yönetim paneli geliştirdim.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <section class="section">
-    <h2>Yetenekler</h2>
-    <ul class="skills">
-      <li><b>Web Tasarım:</b> WordPress, Elementor Pro, Theme Builder, Responsive Web Tasarım, HTML, CSS</li>
-      <li><b>Dijital Pazarlama:</b> SEO, Site İçi SEO, Google Ads, Anahtar Kelime Araştırması, Reklam Metni Yazımı</li>
-      <li><b>Sosyal Medya:</b> Sosyal Medya Yönetimi, İçerik Planlama, İçerik Takvimi</li>
-      <li><b>Grafik Tasarım:</b> Sosyal Medya Gönderi Tasarımı, Banner Tasarımı, Web Görselleri</li>
-      <li><b>Diğer:</b> Yapay Zekâ Araçları, Yapay Zekâ Destekli Kodlama</li>
-    </ul>
-  </section>
-
-  <!-- DİLLER: İngilizce seviyesi gelince eklenecek.
-  <section class="section">
-    <h2>Diller</h2>
-    <ul class="skills">
-      <li>Türkçe: Anadil</li>
-      <li>İngilizce: Seviye</li>
-    </ul>
-  </section>
-  -->
-
-  <section class="section">
-    <h2>Çalışma Yaklaşımı</h2>
-    <ul class="skills">
-      <li><b>Düzen:</b> Sayfa yapısının temiz, anlaşılır ve tutarlı olmasına önem veriyorum.</li>
-      <li><b>Her ekranı ayrı kontrol:</b> Tasarımın masaüstünün yanı sıra tablet ve mobilde de düzgün görünmesini kontrol ediyorum.</li>
-      <li><b>Revizyona açık çalışma:</b> Gelen geri bildirimleri değerlendirerek tasarım ve içerik üzerinde gerekli düzenlemeleri yapıyorum.</li>
-    </ul>
-  </section>
-
-  <!-- SEÇİLMİŞ PROJELER: projeler hazır olunca buraya eklenecek.
-  <section class="section">
-    <h2>Projeler</h2>
-    ...
-  </section>
-  -->
+    <aside class="side">
+      <section class="blk">
+        <h2 class="cv-h">İletişim</h2>
+        <dl>
+          <div><dt>Telefon</dt><dd><a href="tel:+905398692714">0539 869 27 14</a></dd></div>
+          <div><dt>E-posta</dt><dd class="mail"><a href="mailto:mehmetkaymaz.web@gmail.com">mehmetkaymaz.web@gmail.com</a></dd></div>
+          <div><dt>Web</dt><dd><a href="https://mehmetkaymaz.github.io">mehmetkaymaz.github.io</a></dd></div>
+          <div><dt>Konum</dt><dd>İzmir, Türkiye</dd></div>
+          <div><dt>Doğum tarihi</dt><dd>18.05.2004</dd></div>
+        </dl>
+      </section>
+      <section class="blk">
+        <h2 class="cv-h">Yetenekler</h2>
+        <ul class="sk">
+          <li><b>Web Tasarım</b><span>WordPress, Elementor Pro, Theme Builder, Responsive Web Tasarım, HTML, CSS</span></li>
+          <li><b>Dijital Pazarlama</b><span>SEO, Site İçi SEO, Google Ads, Anahtar Kelime Araştırması, Reklam Metni Yazımı</span></li>
+          <li><b>Sosyal Medya</b><span>Sosyal Medya Yönetimi, İçerik Planlama, İçerik Takvimi</span></li>
+          <li><b>Grafik Tasarım</b><span>Sosyal Medya Gönderi Tasarımı, Banner Tasarımı, Web Görselleri</span></li>
+          <li><b>Yazılım Geliştirme</b><span>Python, FastAPI, TypeScript, Next.js, React, C#, .NET 8, ASP.NET Core, REST API</span></li>
+          <li><b>Otomasyon</b><span>Playwright, PuppeteerSharp, Selenium, Web Scraping, RPA, WordPress REST API</span></li>
+          <li><b>Veritabanı</b><span>SQLAlchemy, Prisma ORM, Entity Framework Core, SQLite, PostgreSQL</span></li>
+          <li><b>Yapay Zekâ</b><span>LLM API Entegrasyonu (OpenRouter, DeepSeek), Prompt Tasarımı, Yapay Zekâ Destekli Kodlama</span></li>
+        </ul>
+      </section>
+      <section class="blk">
+        <h2 class="cv-h">Çalışma Yaklaşımı</h2>
+        <ul class="sk">
+          <li><b>Düzen</b><span>Sayfa yapısının temiz, anlaşılır ve tutarlı olmasına önem veriyorum.</span></li>
+          <li><b>Her ekranı ayrı kontrol</b><span>Tasarımın tablet ve mobilde de düzgün görünmesini kontrol ediyorum.</span></li>
+          <li><b>Revizyona açık çalışma</b><span>Geri bildirimleri değerlendirip tasarım ve içerikte gerekli düzenlemeleri yapıyorum.</span></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
 
 </article>
 
@@ -321,7 +496,7 @@
     editBtn.setAttribute('aria-pressed', String(on));
     editBtn.textContent = on ? 'Düzenlemeyi bitir' : 'Metni düzenle';
     document.body.classList.toggle('editing', on);
-    cv.querySelectorAll('h1, .role, p, li, h3, b, span').forEach(el => {
+    cv.querySelectorAll('h1, .role, p, li, h3, b, span, dd, dt').forEach(el => {
       el.contentEditable = on ? 'true' : 'false';
     });
   });

@@ -53,3 +53,21 @@ footer.site-footer .wrap { display: block; }
   .sf-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .sf-bottom { margin-top: 36px; }
 }
+
+/* ---------- Üst menü: CV düğmesi ---------- */
+.nav-cv { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: 99px; border: 1px solid rgba(238,243,250,.24); color: #eef3fa; font-size: 14.5px; font-weight: 500; white-space: nowrap; transition: border-color .2s, background .2s; }
+.nav-cv svg { width: 17px; height: 17px; flex: none; }
+.nav-cv:hover { border-color: #eef3fa; background: rgba(238,243,250,.06); }
+@media (min-width: 1081px) { .nav-panel .nav-cv { margin-right: -14px; } }
+@media (max-width: 1080px) {
+  .js .nav-cv { margin-top: auto; justify-content: center; min-height: 54px; font-size: 16px; }
+  .js .nav-cv + .nav-cta { margin-top: 12px; }
+  html:not(.js) .nav-cv { display: none; }
+}
+.nav-cta { white-space: nowrap; }
+/* Orta genişlikte menü sıkışmasın: CV yalnızca ikon */
+@media (min-width: 1081px) and (max-width: 1320px) {
+  .nav-cv { width: 42px; padding: 0; justify-content: center; gap: 0; font-size: 0; }
+  .nav-cv svg { width: 18px; height: 18px; }
+  .nav-panel .nav-cv { margin-right: -16px; }
+}

@@ -1042,6 +1042,41 @@
     .approach div, .approach div + div { padding: 22px 0; border-left: 0; }
     .approach div + div { border-top: 1px solid var(--line-d); }
   }
+  /* ============================================================
+     PROJELER (ana sayfa)
+     ============================================================ */
+  .hp-sec { padding-bottom: 40px; }
+  .hp-more { display: inline-flex; align-items: center; gap: 8px; justify-self: start; font-weight: 600; color: var(--blue-deep, #1f5bd6); }
+  .hp-more svg { width: 18px; height: 18px; transition: transform .2s; }
+  .hp-more:hover svg { transform: translateX(4px); }
+  .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; }
+  .hp a.hp-card { height: 100%; display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid #e2e6ec; border-radius: 20px; color: var(--ink); text-decoration: none; transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s; }
+  .hp a.hp-card:hover, .hp a.hp-card:focus-visible { transform: translateY(-6px); border-color: color-mix(in srgb, var(--tone) 40%, #e2e6ec); box-shadow: 0 30px 60px -32px color-mix(in srgb, var(--tone) 75%, rgba(11,26,46,.5)); }
+  .hp-shot { position: relative; display: block; height: 236px; padding: 26px 28px 0; overflow: hidden;
+    background: radial-gradient(120% 100% at 85% 0%, color-mix(in srgb, var(--tone) 60%, transparent), transparent 65%), radial-gradient(90% 80% at 0% 100%, color-mix(in srgb, var(--tone) 25%, transparent), transparent 70%), var(--night); }
+  .hp-shot::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(238,243,250,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(238,243,250,.05) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: linear-gradient(180deg, #000, transparent 85%); mask-image: linear-gradient(180deg, #000, transparent 85%); }
+  .hp-win { position: relative; display: block; border-radius: 10px 10px 0 0; overflow: hidden; background: #0f1729; border: 1px solid rgba(238,243,250,.14); border-bottom: 0; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); transform: translateY(10px); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .hp a.hp-card:hover .hp-win { transform: translateY(-2px); }
+  .hp-bar { display: flex; gap: 6px; align-items: center; height: 22px; padding: 0 10px; background: #1a2338; }
+  .hp-bar i { width: 7px; height: 7px; border-radius: 50%; background: #ff5f57; }
+  .hp-bar i:nth-child(2) { background: #febc2e; } .hp-bar i:nth-child(3) { background: #28c840; }
+  .hp-win img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
+  .hp-body { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 24px 26px 24px; }
+  .hp-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .hp-top b { font: 600 34px/1 var(--display); letter-spacing: -.06em; color: var(--tone); }
+  .hp-top small { font-size: 12.5px; font-weight: 600; padding: 4px 11px; border-radius: 99px; white-space: nowrap; color: color-mix(in srgb, var(--tone) 80%, #0b1a2e); background: color-mix(in srgb, var(--tone) 11%, #fff); }
+  .hp-t { font: 600 20px/1.2 var(--display); letter-spacing: -.025em; }
+  .hp-d { font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+  .hp-go { margin-top: auto; padding-top: 6px; display: inline-flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 600; color: color-mix(in srgb, var(--tone) 85%, #0b1a2e); }
+  .hp-go svg { width: 16px; height: 16px; transition: transform .2s; }
+  .hp a.hp-card:hover .hp-go svg { transform: translateX(4px); }
+  @media (max-width: 1080px) { .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 860px) {
+    .hp-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .hp-shot { height: 200px; padding: 20px 20px 0; }
+    .hp-body { padding: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hp a.hp-card, .hp-win { transition: none; } }
 </style>
 <link rel="stylesheet" href="footer.css">
 <link rel="alternate" hreflang="en" href="en/index.html">
@@ -1090,6 +1125,7 @@
         <a href="index.html" hreflang="tr" lang="tr" aria-current="true" aria-label="Türkçe">TR</a>
         <a href="en/index.html" hreflang="en" lang="en" aria-label="English">EN</a>
       </div>
+      <a href="cv/mehmet-kaymaz-cv.html" class="nav-cv" aria-label="CV’yi görüntüle" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>CV</a>
       <a href="iletisim.html" class="btn btn-blue nav-cta">
         İletişime Geç
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1144,7 +1180,7 @@
         <a href="projeler.html" class="btn btn-blue">Projelerimi Gör
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a href="cv/mehmet-kaymaz-cv.html" class="btn btn-ghost">CV'yi Görüntüle</a>
+        <a href="cv/mehmet-kaymaz-cv.html" class="btn btn-ghost" target="_blank" rel="noopener">CV'yi Görüntüle</a>
       </div>
       <p class="available">Yeni iş fırsatlarına açığım</p>
     </div>
@@ -1310,6 +1346,57 @@
   </div>
 </div>
 
+<!-- ============ PROJELER ============ -->
+<section class="sec hp-sec" id="projeler" aria-labelledby="projeler-baslik">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title" id="projeler-baslik">Tasarladığım siteler, geliştirdiğim otomasyonlar.</h2>
+      <div>
+        <p class="sec-lead">Ajans döneminde tasarladığım web sitesi ve tekrar eden işleri yazılımla çözen beş otomasyon projesi. Her kartın arkasında ayrıntılı bir proje sayfası var.</p>
+        <a href="projeler.html" class="hp-more" style="margin-top:18px">Tüm projeler<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <ul class="hp-grid">
+      <li class="hp" style="--tone:#c026d3" data-reveal>
+        <a class="hp-card" href="https://izmirguzelliksalonlari.com/" target="_blank" rel="noopener">
+          <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/proje-izmir-guzellik.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+          <span class="hp-body"><span class="hp-top"><b>01</b><small>Web sitesi</small></span><span class="hp-t">İzmir Güzellik Salonları</span><span class="hp-d">800'ü aşkın salonu listeleyen rehber ve randevu platformu.</span><span class="hp-go">Siteyi aç<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></span>
+        </a>
+      </li>
+      <li class="hp" style="--tone:#3d7eff" data-reveal>
+        <a class="hp-card" href="otomasyon-blog-platformu.html">
+          <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/proje-blog-otomasyon.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+          <span class="hp-body"><span class="hp-top"><b>02</b><small>Full-stack</small></span><span class="hp-t">AI Blog İçerik ve Dağıtım Platformu</span><span class="hp-d">Yapay zekâ ile yazar, birden fazla WordPress sitesinde yayınlar.</span><span class="hp-go">Nasıl çalışır?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+      </li>
+      <li class="hp" style="--tone:#6366f1" data-reveal>
+        <a class="hp-card" href="otomasyon-site-kurucu.html">
+          <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/proje-site-kurucu.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+          <span class="hp-body"><span class="hp-top"><b>03</b><small>Python · AI</small></span><span class="hp-t">AI WordPress Site Kurucu</span><span class="hp-d">Firma bilgisi ve logodan Elementor sayfaları üretir.</span><span class="hp-go">Nasıl çalışır?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+      </li>
+      <li class="hp" style="--tone:#06b6d4" data-reveal>
+        <a class="hp-card" href="otomasyon-deep-seo.html">
+          <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/proje-deep-seo.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+          <span class="hp-body"><span class="hp-top"><b>04</b><small>C# · .NET 8</small></span><span class="hp-t">Deep SEO ve Snippet Otomasyonu</span><span class="hp-d">Rakipleri analiz eder, eksik içeriği ve meta verileri yazar.</span><span class="hp-go">Nasıl çalışır?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+      </li>
+      <li class="hp" style="--tone:#9b2c47" data-reveal>
+        <a class="hp-card" href="otomasyon-is-agi.html">
+          <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/proje-is-agi.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+          <span class="hp-body"><span class="hp-top"><b>05</b><small>Next.js</small></span><span class="hp-t">İş Ağı Yönetim Platformu</span><span class="hp-d">Doğru ekibi önerir, geliri kuruşu kuruşuna paylaştırır.</span><span class="hp-go">Nasıl çalışır?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+      </li>
+      <li class="hp" style="--tone:#8b5cf6" data-reveal>
+        <a class="hp-card" href="otomasyon-vize-asistani.html">
+          <span class="hp-shot"><span class="hp-win"><span class="hp-bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/proje-vize-asistani.jpg" alt="" width="1600" height="1000" loading="lazy" decoding="async"></span></span>
+          <span class="hp-body"><span class="hp-top"><b>06</b><small>Python · RPA</small></span><span class="hp-t">Vize Başvuru Asistanı</span><span class="hp-d">Tekrar eden form işlerini yapar, kritik adımı insana bırakır.</span><span class="hp-go">Nasıl çalışır?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ HAKKIMDA (özet) ============ -->
 <section class="about" id="hakkimda" aria-labelledby="hakkimda-baslik">
   <div class="wrap about-grid">
@@ -1452,7 +1539,7 @@
         <p>Bir web tasarım ajansında veya dijital ekipte, yeni projelerde sorumluluk almaya hazırım.</p>
         <div class="btns">
           <a href="iletisim.html" class="btn btn-white">İletişime Geç</a>
-          <a href="cv/mehmet-kaymaz-cv.html" class="btn btn-ghost">CV'yi Görüntüle</a>
+          <a href="cv/mehmet-kaymaz-cv.html" class="btn btn-ghost" target="_blank" rel="noopener">CV'yi Görüntüle</a>
         </div>
       </div>
       <ul class="contacts">
@@ -1505,7 +1592,7 @@
           <li><small>E-posta</small><a href="mailto:mehmetkaymaz.web@gmail.com">mehmetkaymaz.web@gmail.com</a></li>
           <li><small>Konum</small><span style="color:var(--snow);font-weight:500">İzmir</span></li>
         </ul>
-        <a class="sf-cv" href="cv/mehmet-kaymaz-cv.html">CV'yi Görüntüle</a>
+        <a class="sf-cv" href="cv/mehmet-kaymaz-cv.html" target="_blank" rel="noopener">CV'yi Görüntüle</a>
       </div>
     </div>
     <div class="sf-bottom">
